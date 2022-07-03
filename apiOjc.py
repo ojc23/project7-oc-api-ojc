@@ -1,5 +1,5 @@
 
-from fastapi import FastAPI, File
+from fastapi import FastAPI
 
 
 app = FastAPI(
@@ -12,7 +12,7 @@ app = FastAPI(
 @app.get('/')
 def index():
     return {'message': 'Hello, API for Credit scoring'}
-    
+
 @app.post("/segmentation")
 def get_segmentation_map(file: bytes = File(...)):
     return {'message': 'Hello, API for Credit scoring'}
