@@ -9,7 +9,10 @@ app = FastAPI(
     version="0.1.0",
 )
 
-@app.get('/')
+@app.get('/index')
 def index():
     return {'message': 'Hello, API for Credit scoring'}
 
+@app.post('/index')
+def index():
+    return {'message': 'Hello, API for Credit scoring'}
