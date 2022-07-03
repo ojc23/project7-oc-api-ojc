@@ -26,3 +26,8 @@ def predict():
     probas = model.predict_proba(x_test)[:,1]
 
     return {'proba_computed': str(probas[1])}
+
+# 5. Run the API with uvicorn
+#    Will run on http://127.0.0.1:8000
+if __name__ == '__main__':
+    uvicorn.run(app,debug=True)
