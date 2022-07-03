@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 #from flask import Flask
 import uvicorn
+from fastapi import FastAPI
 import pickle
 import pandas as pd
 
@@ -29,4 +30,4 @@ def predict():
 # http://localhost:5000/
 if __name__ == "__main__":
     #app.run(debug=True)
-    uvicorn.run(app, host='127.0.0.1', port=8000)
+    uvicorn.run(app, host='127.0.0.1', port=8000,debug=True)
