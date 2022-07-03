@@ -25,7 +25,7 @@ def preditc():
     model = pickle.load(open(filename, 'rb'))
 
     #Load Dataframe
-    path_df = './x_test.csv'
+    path_df = './x_test.csv' 
     x_test = pd.read_csv('./x_test.csv', nrows=100).set_index('SK_ID_CURR')
         
     probas = model.predict_proba(x_test)[:,1]
