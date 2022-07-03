@@ -13,13 +13,13 @@ app = FastAPI()
 
 # 2. Index route, opens automatically on http://127.0.0.1:5000
 @app.get('/')
-async def index():
+def index():
     return {'message': 'Hello, API for Credit scoring'}
 
 # 3. Define the prediction function, make a prediction from the datase
 #    and return the predicted 
-@app.post("/predict")
-async def predict_proba():
+@app.post("/predict/")
+def predict_proba():
     # load the model from disk
     filename = r'./model.pkl'
     model = pickle.load(open(filename, 'rb'))

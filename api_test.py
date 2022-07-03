@@ -17,13 +17,13 @@ def prediction():
             'Content-Type': 'application/json'
         }
     #response = requests.request("POST", url, headers=headers, data=data_to_predict_json)
-    response = requests.request("POST", url, headers=headers)
+    response = requests.request("POST", url)
     #response = requests.post(url)
     #proba = pd.read_json(response.json())
     
-    #proba = float(ast.literal_eval(response.text)["proba_computed"])
+    proba = float(ast.literal_eval(response.text)["proba_computed"])
     
-    print(response)
+    print(proba)
     
     #if proba > 0.7:
     #    message = "La probabilité de non remboursement est de: "
