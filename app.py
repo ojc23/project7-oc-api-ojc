@@ -8,8 +8,8 @@ import pandas as pd
 
 # 1. to run use : python3 api.py 
 
-#app = Flask(__name__)
-app = FastAPI()
+app = Flask(__name__)
+#app = FastAPI()
 
 # 2. Index route, opens automatically on http://127.0.0.1:5000
 @app.route('/')
