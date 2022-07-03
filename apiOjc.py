@@ -9,7 +9,7 @@ import pandas as pd
 # 1. to run use : python3 api.py 
 
 #app = Flask(__name__)
-app = FastAPI()
+app = FastAPI(__name__)
 
 # 2. Index route, opens automatically on http://127.0.0.1:5000
 @app.get('/')
@@ -25,7 +25,6 @@ async def predict_proba():
     model = pickle.load(open(filename, 'rb'))
 
     #Load Dataframe
-    path_df = './x_test.csv'
     x_test = pd.read_csv('./x_test.csv', nrows=100).set_index('SK_ID_CURR')
         
     probas = model.predict_proba(x_test)[:,1]
@@ -34,6 +33,6 @@ async def predict_proba():
 
 
 # http://localhost:5000/
-#if __name__ == '__main__':
-#    uvicorn.run(app=app, host='127.0.0.1', port=5000)
+if __name__ == '__main__':
+    uvicorn.run(app=app, host='127.0.0.1', port=5000)
 
