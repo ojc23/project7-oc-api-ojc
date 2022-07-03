@@ -12,13 +12,13 @@ import pandas as pd
 app = FastAPI()
 
 # 2. Index route, opens automatically on http://127.0.0.1:5000
-@app.route('/')
+@app.get('/')
 def index():
     return {'message': 'Hello, API for Credit scoring'}
 
 # 3. Define the prediction function, make a prediction from the datase
 #    and return the predicted 
-@app.route("/predit")
+@app.post("/predit")
 def preditc():
     # load the model from disk
     filename = r'./model.pkl'
@@ -36,5 +36,5 @@ def preditc():
 # http://localhost:5000/
 if __name__ == "__main__":
     #app.run(debug=True)
-    uvicorn.run(app, host='127.0.0.1', port=8000)
+    uvicorn.run(app, host='127.0.0.1', port=5000)
 
