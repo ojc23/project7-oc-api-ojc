@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #from flask import Flask
-import uvicorn
+#import uvicorn
 from fastapi import FastAPI
 import pickle
 import pandas as pd
@@ -34,7 +34,7 @@ def predict_proba():
 
 
 # http://localhost:5000/
-if __name__ == '__main__':
-    uvicorn.run(app, host='127.0.0.1', port=8000)
+#if __name__ == '__main__':
+#    uvicorn.run(app, host='127.0.0.1', port=8000)
 
 #uvicorn apiOjc:app --reload 
