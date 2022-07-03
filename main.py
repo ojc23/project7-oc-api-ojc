@@ -6,14 +6,15 @@ import pickle
 import pandas as pd
 
 
+from fastapi import FastAPI
+
 app = FastAPI()
 
-# 3. Index route, opens automatically on http://127.0.0.1:8000
-@app.get('/')
-def index():
-    return {'message': 'Hello, API for Credit scoring'}
+@app.get("/")
+async def root():
+    return {"message": "Hello World"}
 
-@app.post("/predict/")
+@app.get("/predict/")
 def predict():
     # load the model from disk
     filename = r'model.pkl'
@@ -25,9 +26,3 @@ def predict():
     probas = model.predict_proba(x_test)[:,1]
 
     return {'proba_computed': str(probas[1])}
-
-
-# http://localhost:5000/
-if __name__ == "__main__":
-    #app.run(debug=True)
-    uvicorn.run(app, host='127.0.0.1', port=8000,debug=True)
