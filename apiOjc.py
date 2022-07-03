@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-from flask import Flask
+#from flask import Flask
+import uvicorn
 import pickle
 import pandas as pd
 
