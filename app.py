@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #from flask import Flask
-import uvicorn
+#import uvicorn
 from fastapi import FastAPI
 import pickle
 import pandas as pd
@@ -12,20 +12,20 @@ import pandas as pd
 app = FastAPI()
 
 # 2. Index route, opens automatically on http://127.0.0.1:5000
-@app.get('/')
+@app.route('/')
 def index():
     return {'message': 'Hello, API for Credit scoring'}
 
 # 3. Define the prediction function, make a prediction from the datase
 #    and return the predicted 
-@app.post("/predit")
+@app.route("/predit")
 def preditc():
     # load the model from disk
     filename = r'./model.pkl'
     model = pickle.load(open(filename, 'rb'))
 
     #Load Dataframe
-    path_df = './x_test.csv' 
+    path_df = './x_test.csv'
     x_test = pd.read_csv('./x_test.csv', nrows=100).set_index('SK_ID_CURR')
         
     probas = model.predict_proba(x_test)[:,1]
@@ -35,6 +35,5 @@ def preditc():
 
 # http://localhost:5000/
 if __name__ == "__main__":
-    #app.run(debug=True)
-    uvicorn.run(app, host='127.0.0.1', port=5000)
-
+    app.run(debug=True)
+    #uvicorn.run(app, host='127.0.0.1', port=8000)
