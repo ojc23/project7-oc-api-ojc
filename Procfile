@@ -1,1 +1,1 @@
-web: sh setup.sh && streamlit run app.py
+web: gunicorn -w 3 -k uvicorn.workers.UvicornWorker apiScoring:app
