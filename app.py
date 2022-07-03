@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-#from flask import Flask
+from flask import Flask
 #import uvicorn
 from fastapi import FastAPI
 import pickle
