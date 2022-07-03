@@ -14,7 +14,7 @@ app = FastAPI()
 async def root():
     return {"message": "Hello World"}
 
-@app.get("/predict/")
+@app.get("/predict")
 def predict():
     # load the model from disk
     filename = r'model.pkl'
