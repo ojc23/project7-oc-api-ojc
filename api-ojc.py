@@ -18,8 +18,8 @@ def index():
 
 # 3. Define the prediction function, make a prediction from the datase
 #    and return the predicted 
-@app.post("/predit")
-def preditc():
+@app.post("/predict")
+def predict_proba():
     # load the model from disk
     filename = r'./model.pkl'
     model = pickle.load(open(filename, 'rb'))
@@ -30,10 +30,11 @@ def preditc():
         
     probas = model.predict_proba(x_test)[:,1]
 
-    return {'proba_failed': str(probas[0])}
+    return {'proba_computed': str(probas[0])}
 
 
 # http://localhost:5000/
-#if __name__ == '__main__':
-#    uvicorn.run(app, host='127.0.0.1', port=8000)
-    #uvicorn app --reload
+if __name__ == '__main__':
+    uvicorn.run(app, host='127.0.0.1', port=8000)
+
+uvicorn api-ojc:app --reload
