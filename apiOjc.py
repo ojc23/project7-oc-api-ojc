@@ -1,18 +1,39 @@
-
+# -*- coding: utf-8 -*-
+#from flask import Flask
+import uvicorn
 from fastapi import FastAPI
+import pickle
+import pandas as pd
 
 
-app = FastAPI(
-    title="DeepLabV3 image segmentation",
-    description="""Obtain semantic segmentation maps of the image in input via DeepLabV3 implemented in PyTorch.
-                           Visit this URL at port 8501 for the streamlit interface.""",
-    version="0.1.0",
-)
+# 1. to run use : python3 api.py 
 
-@app.get('/index')
-def index():
+#app = Flask(__name__)
+app = FastAPI()
+
+# 2. Index route, opens automatically on http://127.0.0.1:5000
+@app.get('/')
+async def index():
     return {'message': 'Hello, API for Credit scoring'}
 
-@app.post('/index')
-def index():
-    return {'message': 'Hello, API for Credit scoring'}
+# 3. Define the prediction function, make a prediction from the datase
+#    and return the predicted 
+@app.post("/predict")
+async def predict_proba():
+    # load the model from disk
+    filename = r'./model.pkl'
+    model = pickle.load(open(filename, 'rb'))
+
+    #Load Dataframe
+    path_df = './x_test.csv'
+    x_test = pd.read_csv('./x_test.csv', nrows=100).set_index('SK_ID_CURR')
+        
+    probas = model.predict_proba(x_test)[:,1]
+
+    return {'proba_computed': str(probas[0])}
+
+
+# http://localhost:5000/
+if __name__ == '__main__':
+    uvicorn.run(app=app, host='127.0.0.1', port=5000)
+
