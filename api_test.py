@@ -10,7 +10,7 @@ url = 'http://127.0.0.1:8000/predict/'
 #def prediction(self, id_client):
 def prediction():
     #url ="https://fastapi-avi-oc-projet7.herokuapp.com/predict"
-    url ='http://127.0.0.1:8000/predict'
+    url ='http://127.0.0.1:8000/predict/'
     #data_to_predict = self.data[self.data["SK_ID_CURR"] == id_client].drop(['SK_ID_CURR', 'TARGET'], axis = 1)
     #data_to_predict = pd.DataFrame(self.data.drop(['SK_ID_CURR', 'TARGET'], axis = 1).iloc[id]).T
     #data_to_predict_json = json.dumps(data_to_predict.to_dict('records')[0])
@@ -37,5 +37,6 @@ def prediction():
     #print (proba, result, message)
     #return (proba, result, message)
 
-if __name__ == '__main__' :
-    prediction()
+
+t = prediction() 
+print(t)

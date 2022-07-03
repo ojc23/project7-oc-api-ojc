@@ -8,7 +8,7 @@ import pandas as pd
 
 from fastapi import FastAPI
 
-app = FastAPI()
+app = FastAPI(debug=True)
 
 @app.get("/")
 async def root():
@@ -24,10 +24,11 @@ def predict():
     x_test = pd.read_csv('x_test.csv', nrows=100).set_index('SK_ID_CURR')
         
     probas = model.predict_proba(x_test)[:,1]
+    print({'proba_computed': str(probas[1])})
 
     return {'proba_computed': str(probas[1])}
 
 # 5. Run the API with uvicorn
 #    Will run on http://127.0.0.1:8000
 if __name__ == '__main__':
-    uvicorn.run(app,debug=True)
+    uvicorn.run(app)
