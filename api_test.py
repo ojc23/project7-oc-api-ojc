@@ -13,9 +13,9 @@ def prediction():
     #data_to_predict = self.data[self.data["SK_ID_CURR"] == id_client].drop(['SK_ID_CURR', 'TARGET'], axis = 1)
     #data_to_predict = pd.DataFrame(self.data.drop(['SK_ID_CURR', 'TARGET'], axis = 1).iloc[id]).T
     #data_to_predict_json = json.dumps(data_to_predict.to_dict('records')[0])
-    headers = {
-            'Content-Type': 'application/json'
-        }
+    #headers = {
+    #        'Content-Type': 'application/json'
+    #    }
     #response = requests.request("POST", url, headers=headers, data=data_to_predict_json)
     response = requests.request("POST", url)
     #response = requests.post(url)
