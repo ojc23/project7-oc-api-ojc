@@ -19,10 +19,7 @@ def predict():
     model = pickle.load(open(filename, 'rb'))
 
     #Load Dataframe
-    path_df = './x_test.csv'
-    #x_test = pd.read_csv(path_df, index_col=0, nrows=20)
     x_test = pd.read_csv('./x_test.csv', nrows=100).set_index('SK_ID_CURR')
-    y_test = pd.read_csv('./y_test.csv', nrows=100).set_index('SK_ID_CURR')
         
     probas = model.predict_proba(x_test)[:,1]
     dict_proba = {'proba_computed': str(probas[0])}
