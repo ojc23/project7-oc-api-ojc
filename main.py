@@ -7,7 +7,6 @@ import pandas as pd
 #from fastapi.responses import UJSONResponse
 # pip install "fastapi[all]"  to return json format
 from fastapi.responses import ORJSONResponse  
-import streamlit as st
 
 '''
 this scrip define the API to provide the score of 
@@ -17,13 +16,10 @@ tu ru : uvicorn main:app --reload
 
 from fastapi import FastAPI
 
-app = FastAPI(debug=True)
+#app = FastAPI(debug=True)
+app = FastAPI()
 
-@app.get("/")
-async def root():
-    return {"message": "Hello World"}
-
-@app.get("/predict/", response_class=ORJSONResponse)
+@app.get("/", response_class=ORJSONResponse)
 def predict():
     # load the model from disk
     filename = r'model.pkl'
@@ -34,7 +30,7 @@ def predict():
         
     probas = model.predict_proba(x_test)[:,1]
 
-    return {'proba_computed': str(probas[7])}
+    return {'proba_computed': str(probas[1])}
 
 #if __name__ == "__main__":
 #    uvicorn.run("main:app", port=8000, workers=1)
