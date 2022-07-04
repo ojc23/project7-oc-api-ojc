@@ -8,16 +8,11 @@ import pandas as pd
 # pip install "fastapi[all]"  to return json format
 from fastapi.responses import ORJSONResponse  
 
-'''
-this scrip define the API to provide the score of 
-one customer to the application
-tu ru : uvicorn main:app --reload
-'''
-
 from fastapi import FastAPI
 
 #app = FastAPI(debug=True)
-app = FastAPI()
+app = FastAPI(title="Provide credit score fro a customer",
+              version="0.1.0",)
 
 @app.get("/", response_class=ORJSONResponse)
 def predict():
