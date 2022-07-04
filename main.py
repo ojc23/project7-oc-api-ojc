@@ -32,6 +32,7 @@ def predict():
     x_test = pd.read_csv('x_test.csv', nrows=100).set_index('SK_ID_CURR')
         
     probas = model.predict_proba(x_test)[:,1]
+    print(probas)
 
     return {'proba_computed': str(probas[7])}
     #return {'proba_computed': str(probas)}
