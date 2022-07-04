@@ -35,10 +35,6 @@ def predict():
     probas = model.predict_proba(x_test)[:,1]
 
     return {'proba_computed': str(probas[7])}
-    #return {'proba_computed': str(probas)}
-
-
-st.json({'proba_computed': str(probas[7])})
 
 #if __name__ == "__main__":
 #    uvicorn.run("main:app", port=8000, workers=1)
