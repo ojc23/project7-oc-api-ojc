@@ -7,6 +7,7 @@ import pandas as pd
 #from fastapi.responses import UJSONResponse
 # pip install "fastapi[all]"  to return json format
 from fastapi.responses import ORJSONResponse  
+import streamlit as st
 
 '''
 this scrip define the API to provide the score of 
@@ -34,8 +35,11 @@ def predict():
     probas = model.predict_proba(x_test)[:,1]
     print(probas)
 
+    st.write({'proba_computed': str(probas[7])})
+
     return {'proba_computed': str(probas[7])}
     #return {'proba_computed': str(probas)}
+
 
 
 #if __name__ == "__main__":
