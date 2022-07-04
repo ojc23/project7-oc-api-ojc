@@ -6,9 +6,12 @@ import ast
 #def prediction(self, id_client):
 def prediction():
     #url ="https://ojc23-project7-oc-api-ojc-main-6h08ks.streamlitapp.com/predict"
-    url ="https://ojc23-project7-oc-api-ojc-main-6h08ks.streamlitapp.com"
+    #url ="https://ojc23-project7-oc-api-ojc-main-6h08ks.streamlitapp.com"
     #url ="https://fastapi-avi-oc-projet7.herokuapp.com/predict"
+    #url ='http://10.180.123.140:8501'
     #url ='http://127.0.0.1:8000/predict/'
+    url ='http://127.0.0.1:8000/'
+
     headers = {'Content-Type': 'application/json'}
 
     headers = {
@@ -27,5 +30,6 @@ def prediction():
     return (proba)
 
 
-prediction() 
+if __name__ == '__main__':
+    prediction() 
 
