@@ -3,7 +3,7 @@ fastapi==0.70.0
 uvicorn==0.15.0
 lightgbm
 markupsafe==2.1.1
-orjson
+orjson==3.7.5
 gunicorn
-pandas
+pandas==1.4.3
 pickle
