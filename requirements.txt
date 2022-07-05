@@ -4,3 +4,4 @@ uvicorn==0.15.0
 lightgbm
 markupsafe==2.1.1
 orjson
+gunicorn
