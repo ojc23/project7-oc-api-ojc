@@ -2,15 +2,15 @@ import pandas as pd
 import requests, json
 import ast
 
+#Test locally type
+# heroku local
+# url ='http://127.0.0.1:5000/'
 
 #def prediction(self, id_client):
-def prediction():
-    #url ="https://ojc23-project7-oc-api-ojc-main-6h08ks.streamlitapp.com/predict"
-    #url ="https://ojc23-project7-oc-api-ojc-main-6h08ks.streamlitapp.com"
-    #url ="https://fastapi-avi-oc-projet7.herokuapp.com/predict"
-    #url ='http://10.180.123.140:8501'
+def prediction(id_custo):
+    url ='https://project7-api-ojc.herokuapp.com'
     #url ='http://127.0.0.1:8000/predict/'
-    url ='http://127.0.0.1:8000/'
+    #url ='http://127.0.0.1:5000/'
 
     headers = {'Content-Type': 'application/json'}
 
@@ -19,17 +19,20 @@ def prediction():
     'Authorization': 'key ttn-account-notsharinganything',
         }
 
-    params = (('proba_computed', 'proba'),)
+    #id_custo = 1
+    #params = (('id_custo', id_custo),)
+    params = {
+        'running': True,
+        'id_custo': id_custo,
+    }
+
     #https://www.thethingsnetwork.org/forum/t/send-get-request-with-python-curl-with-requests-package-to-swagger-api/44436 
     response = requests.get(url, headers=headers, params=params)
     print(response)
     print(response.json())
     proba = float(ast.literal_eval(response.text)["proba_computed"])
-   
-    print (proba)
-    return (proba)
-
+    print(proba)
 
 if __name__ == '__main__':
-    prediction() 
+    prediction(id_custo = 90) 
 

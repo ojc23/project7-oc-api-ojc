@@ -15,7 +15,7 @@ app = FastAPI(title="Provide credit score fro a customer",
               version="0.1.0",)
 
 @app.get("/", response_class=ORJSONResponse)
-def predict():
+def predict(id_custo:int):
     # load the model from disk
     filename = r'model.pkl'
     model = pickle.load(open(filename, 'rb'))
@@ -25,7 +25,7 @@ def predict():
         
     probas = model.predict_proba(x_test)[:,1]
 
-    return {'proba_computed': str(probas[1])}
+    return {'proba_computed': str(probas[id_custo])}
 
 #if __name__ == "__main__":
 #    uvicorn.run("main:app", port=8000, workers=1)
