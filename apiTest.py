@@ -5,6 +5,7 @@ import ast
 #Test locally type
 # heroku local
 # url ='http://127.0.0.1:5000/'
+# https://project7-api-ojc.herokuapp.com/?id_custo=50
 
 #def prediction(self, id_client):
 def prediction(id_custo):
@@ -18,9 +19,7 @@ def prediction(id_custo):
     'Accept': 'application/json',
     'Authorization': 'key ttn-account-notsharinganything',
         }
-
-    #id_custo = 1
-    #params = (('id_custo', id_custo),)
+        
     params = {
         'running': True,
         'id_custo': id_custo,
