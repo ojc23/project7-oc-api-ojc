@@ -1,16 +1,11 @@
 # -*- coding: utf-8 -*-
-#from flask import Flask
 import uvicorn
 from fastapi import FastAPI
 import pickle
 import pandas as pd
-#from fastapi.responses import UJSONResponse
-# pip install "fastapi[all]"  to return json format
 from fastapi.responses import ORJSONResponse  
-
 from fastapi import FastAPI
 
-#app = FastAPI(debug=True)
 app = FastAPI(title="Provide credit score fro a customer",
               version="0.1.0",)
 

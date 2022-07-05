@@ -8,9 +8,9 @@ import ast
 
 #def prediction(self, id_client):
 def prediction(id_custo):
-    url ='https://project7-api-ojc.herokuapp.com'
+    #url ='https://project7-api-ojc-s.herokuapp.com'
     #url ='http://127.0.0.1:8000/predict/'
-    #url ='http://127.0.0.1:5000/'
+    url ='http://127.0.0.1:5000/'
 
     headers = {'Content-Type': 'application/json'}
 
@@ -34,5 +34,5 @@ def prediction(id_custo):
     print(proba)
 
 if __name__ == '__main__':
-    prediction(id_custo = 90) 
+    prediction(id_custo = 22) 
 
