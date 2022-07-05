@@ -4,6 +4,6 @@ uvicorn==0.15.0
 lightgbm
 markupsafe==2.1.1
 orjson==3.7.5
-gunicorn
+gunicorn==20.1.0
 pandas==1.4.3
 pickle
